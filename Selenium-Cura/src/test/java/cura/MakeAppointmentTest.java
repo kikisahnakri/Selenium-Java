@@ -98,7 +98,6 @@ public class MakeAppointmentTest {
 
     @AfterTest
     private void closeBrowser() {
-        System.out.println("asdas");
         driver.close();
     }
 
