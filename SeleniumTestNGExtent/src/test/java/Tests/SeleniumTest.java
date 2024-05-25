@@ -33,8 +33,7 @@ public class SeleniumTest {
 
         driver.manage().window().maximize();
 
-        HomePage.clik_humberger_menu();
-        HomePage.clik_OnlineProducts_link();
+        HomePage.clikHumbergerMenu();
     }
 
     public static String capture (WebDriver driver) {
@@ -50,30 +49,44 @@ public class SeleniumTest {
         return errflpath;
     }
 
+    @Test (priority = 0)
+    void valiateElementHomePage() throws InterruptedException {
+        test = extent.createTest("Validate elements on Home Page", "This test to verify element home page");
+        HomePage.verifyElementSignInPortal();
+        HomePage.verifyElementOnlineProduct();
+        HomePage.verifyElementAbout();
+        HomePage.verifyElementOurTeam();
+        HomePage.verifyElelmentContact();
+        HomePage.verifyElementCenter();
+        HomePage.verifyElementFooter();
+        HomePage.verifyElementHeader();
 
-    @Test
+    }
+
+
+    @Test(priority = 1)
     void validateTitle_onlineProducts() throws InterruptedException{
         test = extent.createTest("Validate Shoes Title on Product Page", "This test validate that the different Shoes type are correct on Online Product Page");
+        HomePage.clickOnlineProductsOnHumbergerMenu();
         ProductPages.formalShoes_VerifyTitle();
         ProductPages.sportShoesTitle_VerifyTitle();
         ProductPages.sneakersTitle_VerifyTitle();
-        extent.flush();
     }
 
-    @Test
-    void validateFirstFormalShoes(){
+    @Test(priority = 2)
+    void validateFirstFormalShoes() throws InterruptedException {
         test = extent.createTest("Validate first shoe name","This test validate first formal shoes on Product Page");
         ProductPages.formalShoes_verify();
     }
 
-    @Test
-    void validateFirstSportShoes(){
+    @Test(priority = 3)
+    void validateFirstSportShoes() throws InterruptedException {
         test = extent.createTest("Validate first shoe name","This test validate first sport shoes on Product Page");
         ProductPages.sportShoes_verify();
     }
 
-    @Test
-    void validateFirstSneaker(){
+    @Test(priority = 4)
+    void validateFirstSneaker() throws InterruptedException {
         test = extent.createTest("Validate first shoe name","This test validate first sneaker shoes on Product Page");
         ProductPages.sneakers_verify();
     }
